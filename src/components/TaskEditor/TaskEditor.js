@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { addTask } from 'redux/tasks/operations';
+import { addContact } from 'redux/contacts/operations';
 import css from './TaskEditor.module.css';
 
 export const TaskEditor = () => {
@@ -10,7 +10,7 @@ export const TaskEditor = () => {
     const form = e.currentTarget;
     const text = form.elements.text.value;
     if (text !== '') {
-      dispatch(addTask(text));
+      dispatch(addContact(text));
       form.reset();
       return;
     }
