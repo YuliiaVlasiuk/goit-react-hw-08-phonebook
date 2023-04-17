@@ -1,27 +1,22 @@
-const styles = {
-    container: {
-      minHeight: 'calc(100vh - 50px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    title: {
-      fontWeight: 500,
-      fontSize: 48,
-      textAlign: 'center',
-    },
-  };
-  
+
+import { Link } from 'react-router-dom';
+import { useAuth } from 'hooks';
+
   export default function Home() {
+    const { isLoggedIn } = useAuth();
+
     return (
-      <div style={styles.container}>
-        <h1 style={styles.title}>
-          Task manager welcome page{' '}
-          <span role="img" aria-label="Greeting icon">
-            💁‍♀️
-          </span>
-        </h1>
-      </div>
-    );
-  }
+     <div>
+            {!isLoggedIn ? ( <p>
+            Hello! Welcome to NoteBook:{' '}
+            <Link to="/register"> register </Link>
+            or
+            <Link to="/login"> login </Link>
+             </p>):(<p> You are already logged in</p>)
+         }
+       </div>
+
+    )
+        }   
+    
   

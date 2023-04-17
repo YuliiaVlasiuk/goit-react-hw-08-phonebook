@@ -7,7 +7,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectIsLoading,selectContacts } from 'redux/contacts/selectors';
 //import { Layout } from 'components/Layout';
 import { ContactForm } from 'components/ContactForm/ContactForm';
-//import { Filter } from 'components/Filter/Filter';
+import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 
 
@@ -28,7 +28,7 @@ export default function Contacts() {
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
-       {/* // <Filter /> */}
+        <Filter /> 
         {isLoading &&  <b>Request in progress...</b>}
         {contacts.length > 0 ? <ContactList /> : <p> Phonebook is empty</p>}
       </div>
