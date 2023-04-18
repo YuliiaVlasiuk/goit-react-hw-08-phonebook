@@ -1,24 +1,20 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { nanoid } from 'nanoid';
 import { Formik, Field } from 'formik';
 import { Form, FormField, ErrorMessage } from './ContactForm.styled';
-//import { selectContacts } from 'redux/selectors';
-
 import Notiflix from 'notiflix';
-//import { addContact } from 'redux/operations';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const contacts = useSelector(selectContacts);
 
   const onChangeName = e => setName(e.currentTarget.value);
-  const onChangePhone = e => setPhone(e.currentTarget.value);
+  const onChangeNumber = e => setNumber(e.currentTarget.value);
 
   const dispatch = useDispatch();
 
@@ -28,7 +24,7 @@ export const ContactForm = () => {
     const newContact = {
       id: nanoid(),
       name,
-      phone,
+      number,
     };
 
     const arrayOfContactsName = [];
@@ -42,18 +38,18 @@ export const ContactForm = () => {
       return;
     }
 
-    if (newContact.name === '' || newContact.phone === '') {
+    if (newContact.name === '' || newContact.number === '') {
       Notiflix.Notify.failure(`Please enter contact information`);
       return;
     }
 
     dispatch(addContact(newContact));
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
-    <Formik initialValues={{ name: '', phone: '' }}>
+    <Formik initialValues={{ name: '', number: '' }}>
       <Form onSubmit={handleSubmit}>
         <FormField>
           Name
@@ -70,12 +66,12 @@ export const ContactForm = () => {
           Number
           <Field
             type="tel"
-            name="phone"
-            value={phone}
+            name="number"
+            value={number}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            onChange={onChangePhone}
+            onChange={onChangeNumber}
           />
-          <ErrorMessage name="phone" component="div" />
+          <ErrorMessage name="number" component="div" />
         </FormField>
 
         <button type="submit">Add contact</button>

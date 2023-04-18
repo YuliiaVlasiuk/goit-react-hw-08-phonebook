@@ -8,7 +8,7 @@ import { useAuth } from 'hooks';
     return (
      <div>
             {!isLoggedIn ? ( <p>
-            Hello! Welcome to NoteBook:{' '}
+            Hello! Welcome to PhoneBook:{' '}
             <Link to="/register"> register </Link>
             or
             <Link to="/login"> login </Link>

@@ -1,10 +1,6 @@
 import { useSelector } from 'react-redux';
-//import { selectFilter } from 'redux/selectors';
 import { useDispatch } from 'react-redux';
-//import { checkFilter } from '../../redux/contactsSlice';
-
 import { selectFilter } from 'redux/contacts/selectors';
-
 import { checkFilter } from 'redux/contacts/slice';
 
 export const Filter = () => {
@@ -16,7 +12,7 @@ export const Filter = () => {
 
   return (
     <div>
-      <p>Find contacts by name</p>
+      <p style={{ paddingBottom: '10px' }}>Find contacts by name</p>
       <input type="text" value={filter} onChange={changeFieldFilter}></input>
     </div>
   );
